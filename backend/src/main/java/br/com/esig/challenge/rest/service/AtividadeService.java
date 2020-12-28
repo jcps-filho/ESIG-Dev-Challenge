@@ -1,5 +1,7 @@
 package br.com.esig.challenge.rest.service;
 
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import org.hibernate.ObjectNotFoundException;
@@ -17,6 +19,9 @@ public class AtividadeService {
 	private AtividadeRepository atividadeRepository;
 	
 	public Atividade adicionar(Atividade atividade) {
+		atividade.setExcluido(0);
+		atividade.setStatus(StatusAtividade.A_FAZER);
+		atividade.setData(new Date());
 		return atividadeRepository.save(atividade);
 	}
 	
@@ -53,6 +58,14 @@ public class AtividadeService {
 		 
 		 return aluguel.orElseThrow(() -> new ObjectNotFoundException(
 					"Livro com o id " + id + " não encontrado", null)); 
+	}
+	
+	public List<Atividade> listAll() {
+		return atividadeRepository.findAll();
+	}
+	
+	public List<Atividade> listByStatus(StatusAtividade status) {
+		return atividadeRepository.findByStatus(status);
 	}
 
 }

@@ -1,5 +1,7 @@
 package br.com.esig.challenge.rest.entity;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +22,7 @@ public class Atividade {
 	private String descricao;
 	private StatusAtividade status;
 	private int excluido;
+	private Date data;
 	
 	public Atividade() {
 		super();
@@ -64,6 +67,14 @@ public class Atividade {
 	
 	public void setExcluido(int excluido) {
 		this.excluido = excluido;
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
 	}
 	
 }
