@@ -67,14 +67,14 @@ public class AtividadeController {
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value="/feito", method = RequestMethod.POST)
-	public ResponseEntity<?> feito(@RequestBody int id) {
+	public ResponseEntity<?> feito(@RequestBody Integer id) {
 		Atividade response = atividadeService.alterarStatus(id, StatusAtividade.FEITO);
 		return ResponseEntity.ok().body(response);
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value="/fazer", method = RequestMethod.POST)
-	public ResponseEntity<Atividade> aFazer(@RequestBody int id) {
+	public ResponseEntity<Atividade> aFazer(@RequestBody Integer id) {
 		Atividade response = atividadeService.alterarStatus(id, StatusAtividade.A_FAZER);
 		return ResponseEntity.ok().body(response);
 	}

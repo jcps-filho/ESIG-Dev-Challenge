@@ -12,8 +12,7 @@ import { StatusAtividade } from 'src/app/status-atividade.enum';
 export class AppComponent implements OnInit{
   
   toDoForm: FormGroup;
-  atividadesPorFazer = [];
-  atividadesFeitas = [];
+  atividades:Array<Atividade>;
   checked = false;
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
@@ -22,8 +21,7 @@ export class AppComponent implements OnInit{
     this.toDoForm = this.formBuilder.group({
       atividade: [null]
     });
-    this.listAtividadesPorFazer();
-    this.listAtividadesFeitas();
+    this.listAtividades();
   }
 
   add() {
@@ -31,8 +29,7 @@ export class AppComponent implements OnInit{
       const body = { descricao: this.toDoForm.get('atividade').value };
       this.http.put<Atividade>(environment.apiURL + '/atividade/adicionar', body)
         .subscribe(data => { 
-          this.listAtividadesPorFazer();
-          this.listAtividadesFeitas(); 
+          this.listAtividades();
         });
       this.toDoForm.reset();
     } else {
@@ -40,16 +37,11 @@ export class AppComponent implements OnInit{
     }
   }
 
-  listAtividadesPorFazer() {
-    const params = new HttpParams().set('status', '0');
-    this.http.get<any>(environment.apiURL + '/atividade/listByStatus', {params})
-      .subscribe(data => { this.atividadesPorFazer = data });
-  }
-
-  listAtividadesFeitas() {
-    const params = new HttpParams().set('status', '1');
-    this.http.get<any>(environment.apiURL + '/atividade/listByStatus', {params})
-      .subscribe(data => this.atividadesFeitas = data);
+  listAtividades() {
+    this.http.get<any>(environment.apiURL + '/atividade/list')
+      .subscribe(data => { 
+        this.atividades = data 
+      });
   }
 
   excluir() {
@@ -58,9 +50,17 @@ export class AppComponent implements OnInit{
       .subscribe(data => console.log(data));
   }
 
-  concluir(event: any) {
+  concluir(index: any) {
     console.log('Finalizar atividade');
-    console.log(event);
+    console.log(index);
+    const body = this.atividades[index].id 
+    if(this.atividades[index].status == StatusAtividade.A_FAZER) {
+      this.http.post<any>(environment.apiURL + '/atividade/feito', body)
+        .subscribe(data => console.log('Status alterado'));
+    } else {
+      this.http.post<any>(environment.apiURL + '/atividade/fazer', body)
+      .subscribe(data => console.log('Status alterado'));
+    }
   }
 }
 

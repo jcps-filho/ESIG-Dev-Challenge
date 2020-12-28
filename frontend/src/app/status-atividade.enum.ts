@@ -1,6 +1,6 @@
 export enum StatusAtividade {
 
-    A_FAZER = 0,
-    FEITO = 1,
+    A_FAZER = "A_FAZER",
+    FEITO = "FEITO",
 
 }
