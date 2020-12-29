@@ -1,7 +1,6 @@
 ## To do APP
 
-Aplicação feita utilizando Spring Framework e Angular que tem como intenção criar uma e gerenciar uma lista de atividades. Utiliza conceitos de API Rest, 
-persistência e mapeamento com Hibernate e componentes do Angular Material no frontend.
+Aplicação feita utilizando Spring Framework e Angular que tem como intenção criar uma e gerenciar uma lista de atividades. Utiliza conceitos de API Rest, CRUD com exclussão lógica, persistência e mapeamento com Hibernate e componentes do Angular Material no frontend.
 
 ## Requirements
 
