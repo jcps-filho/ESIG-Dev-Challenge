@@ -26,7 +26,7 @@ public class AtividadeController {
 	@Autowired
 	private AtividadeService atividadeService;
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:3000"})
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> findId(@PathVariable Integer id) throws ObjectNotFoundException {
 		
@@ -35,7 +35,7 @@ public class AtividadeController {
 		return ResponseEntity.ok().body(response);
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:3000"})
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ResponseEntity<?> listAll() throws ObjectNotFoundException {
 		
@@ -44,7 +44,7 @@ public class AtividadeController {
 		return ResponseEntity.ok().body(response);
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:3000"})
 	@RequestMapping(value = "/listByStatus", method = RequestMethod.GET)
 	public ResponseEntity<?> listByStatus(@RequestParam int status) throws ObjectNotFoundException {
 		
@@ -53,7 +53,7 @@ public class AtividadeController {
 		return ResponseEntity.ok().body(response);
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:3000"})
 	@RequestMapping(value="/adicionar", method = RequestMethod.PUT)
 	public ResponseEntity<Atividade> adicionar(@RequestBody Atividade atividade) {
 		
@@ -65,21 +65,21 @@ public class AtividadeController {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:3000"})
 	@RequestMapping(value="/feito", method = RequestMethod.POST)
 	public ResponseEntity<?> feito(@RequestBody Integer id) {
 		Atividade response = atividadeService.alterarStatus(id, StatusAtividade.FEITO);
 		return ResponseEntity.ok().body(response);
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:3000"})
 	@RequestMapping(value="/fazer", method = RequestMethod.POST)
 	public ResponseEntity<Atividade> aFazer(@RequestBody Integer id) {
 		Atividade response = atividadeService.alterarStatus(id, StatusAtividade.A_FAZER);
 		return ResponseEntity.ok().body(response);
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:3000"})
 	@RequestMapping(value="/excluir", method = RequestMethod.DELETE)
 	public ResponseEntity<?> excluir(@RequestParam int id) {
 		Atividade response = atividadeService.excluir(id);

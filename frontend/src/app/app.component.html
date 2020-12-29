@@ -13,12 +13,16 @@
   </div>
 
   <div style="margin-top: 10%;">
-    <h1> A fazer</h1>
+    <h1>Atividades</h1>
     <mat-card *ngFor="let atividade of atividades; let i = index" [attr.data-index]="i" style="margin-bottom: 2%;">
-      <mat-checkbox *ngIf="atividade.status == 'A_FAZER'" class="example-margin" (click)="concluir(i)">{{atividade.descricao}}</mat-checkbox>
-      <mat-checkbox *ngIf="atividade.status == 'FEITO'" checked="true" class="example-margin" (click)="concluir(i)">{{atividade.descricao}}</mat-checkbox>
+      <mat-checkbox *ngIf="atividade.status == 'A_FAZER'" class="example-margin" (click)="concluir(i)">
+        {{atividade.descricao}}</mat-checkbox>
+      <mat-checkbox *ngIf="atividade.status == 'FEITO'" checked="true" class="example-margin" (click)="concluir(i)">
+        {{atividade.descricao}}</mat-checkbox>
+      <button class="mdc-icon-button material-icons" (click)="excluir(i)" style="float: right;">delete</button>
+
     </mat-card><br>
-    
+
   </div>
 
 </div>

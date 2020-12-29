@@ -13,7 +13,6 @@ export class AppComponent implements OnInit{
   
   toDoForm: FormGroup;
   atividades:Array<Atividade>;
-  checked = false;
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
 
@@ -44,22 +43,22 @@ export class AppComponent implements OnInit{
       });
   }
 
-  excluir() {
-    const params = new HttpParams().set('id', '1');
+  excluir(index: number) {
+    const params = new HttpParams().set('id', this.atividades[index].id.toString());
     this.http.delete<any>(environment.apiURL + '/atividade/excluir', {params})
-      .subscribe(data => console.log(data));
+      .subscribe(data => {
+        this.listAtividades();
+      });
   }
 
-  concluir(index: any) {
-    console.log('Finalizar atividade');
-    console.log(index);
+  concluir(index: number) {
     const body = this.atividades[index].id 
     if(this.atividades[index].status == StatusAtividade.A_FAZER) {
       this.http.post<any>(environment.apiURL + '/atividade/feito', body)
-        .subscribe(data => console.log('Status alterado'));
+        .subscribe();
     } else {
       this.http.post<any>(environment.apiURL + '/atividade/fazer', body)
-      .subscribe(data => console.log('Status alterado'));
+      .subscribe();
     }
   }
 }
