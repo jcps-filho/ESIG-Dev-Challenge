@@ -2,6 +2,12 @@
 
 Aplicação feita utilizando Spring Framework e Angular que tem como intenção criar uma e gerenciar uma lista de atividades. Utiliza conceitos de API Rest, CRUD com exclussão lógica, persistência e mapeamento com Hibernate e componentes do Angular Material no frontend.
 
+Desafios concluídos: 
+
+a) Criar uma aplicação Java backend com Spring Boot e frontend com Angular na versão atual.
+
+b) Utilizar persistência em banco de dados.
+
 ## Requirements
 
 Node.js na versão 12.18.3 ou superior;
