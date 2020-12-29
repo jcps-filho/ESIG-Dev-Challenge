@@ -28,7 +28,7 @@ Para executar a aplicação num ambiente de testes localmente é necessário exe
 
 6. Após isso execute o frontend com o comando ```lite-server --baseDir="dist/to-do-list"```
 
-Observação: O JAR foi compilado utilizando o usuário padrão do PostgreSQL, "postgre", e a senha "root", caso seja necessário utilizar um usuário diferente o backend deverá ser compilar novamente alterando no arquivo de propriedades o nome de usuário e senha do banco a ser utilizado. Para realizar tal procedimento execute os seguintes passos:
+Observação: O JAR foi compilado utilizando o usuário padrão do PostgreSQL, "postgres", e a senha "root", caso seja necessário utilizar um usuário diferente o backend deverá ser compilar novamente alterando no arquivo de propriedades o nome de usuário e senha do banco a ser utilizado. Para realizar tal procedimento execute os seguintes passos:
 
 1. Navegue até a pasta "backend/src/main/resources"
 
