@@ -27,7 +27,7 @@ Para executar a aplicação num ambiente de testes localmente é necessário exe
 
 5. Para o frontend será necessário um web server, então instale o live-server utilizando o comando ```npm install -g live-server```
 
-6. Após isso execute o frontend com o commando ```lite-server --baseDir="dist/to-do-list"```
+6. Após isso execute o frontend com o comando ```lite-server --baseDir="dist/to-do-list"```
 
 Observação: O JAR foi compilado utilizando o usuário padrão do PostgreSQL, "postgre", e a senha "root", caso seja necessário utilizar um usuário diferente o backend deverá ser compilar novamente alterando no arquivo de propriedades o nome de usuário e senha do banco a ser utilizado. Para realizar tal procedimento execute os seguintes passos:
 
